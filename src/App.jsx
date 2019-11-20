@@ -1,13 +1,29 @@
-import React, { useRef, useEffect } from 'react';
+import React, { Component } from 'react';
 
-export default function App() {
-  const countRenderRef = useRef(1);
-  
-  useEffect(function afterRender() {
-    countRenderRef.current++;
-  });
-
-  return (
-    <div>I've rendered {countRenderRef.current} times</div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      num: 1
+    }
+  }
+  componentDidMount() {
+    console.log('componentDidMount')
+    setTimeout(() => {
+      this.setState({
+        num: this.state.num + 1
+      })
+    }, 5000)
+  }
+  UNSAFE_componentWillUpdate() {
+    console.log('componentWillUpdate')
+  }
+  render() {
+    console.log('render')
+    return (
+      <div>{ this.state.num }</div>
+    );
+  }
 }
+ 
+export default App;
