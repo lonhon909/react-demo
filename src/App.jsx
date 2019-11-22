@@ -1,29 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import AddTodoContainer from './pages/todo/containers/AddTodoContainer';
+import FilterContainer from './pages/todo/containers/FilterContainer';
+import TodoContainer from './pages/todo/containers/TodoContainer';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      num: 1
-    }
-  }
-  componentDidMount() {
-    console.log('componentDidMount')
-    setTimeout(() => {
-      this.setState({
-        num: this.state.num + 1
-      })
-    }, 5000)
-  }
-  UNSAFE_componentWillUpdate() {
-    console.log('componentWillUpdate')
-  }
-  render() {
-    console.log('render')
-    return (
-      <div>{ this.state.num }</div>
-    );
-  }
+const App = () => {
+  return (
+    <>
+      <AddTodoContainer />
+      <TodoContainer />
+      <FilterContainer />
+    </>
+  )
 }
- 
-export default App;
+
+export default App
