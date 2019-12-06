@@ -1,16 +1,14 @@
 import React from 'react';
-import AddTodoContainer from './pages/todo/containers/AddTodoContainer';
-import FilterContainer from './pages/todo/containers/FilterContainer';
-import TodoContainer from './pages/todo/containers/TodoContainer';
+import Child from './Child';
 
-const App = () => {
+export const TitleContext = React.createContext({
+  title: '默认标题'
+})
+
+export default function App() {
   return (
-    <>
-      <AddTodoContainer />
-      <TodoContainer />
-      <FilterContainer />
-    </>
+    <TitleContext.Provider value={{ title: '实际标题' }}>
+      <Child />
+    </TitleContext.Provider>
   )
 }
-
-export default App
